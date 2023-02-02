@@ -1,18 +1,29 @@
 import React from "react";
 import { arrayBuffer } from "stream/consumers";
-import wordsList from '../util/just-words.json'
+import wordsList from '../util/3000words.json'
 console.log("word list: ", wordsList)
 
-export const fiftyRandomWords = (words: []) => {
+export const fiftyRandomWords = (words: any[]) => {
  let els = generateElements()
- let wordList = words.slice(els[0], els[1])
- return wordList
+ let shuffled = shuffleArray(wordsList)
+ let selectedWords = shuffled.slice(els[0], els[1])
+ return selectedWords
 }
 
+const shuffleArray = (array: any[]) => {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+    }
+    return array
+  }
+
 const generateElements = () => {
- let firstNum = Math.floor(Math.random() * 10000)
+ let firstNum = Math.floor(Math.random() * wordsList.length)
  let secondNum
- if (10000 - firstNum < 50) {
+ if (wordsList.length - firstNum < 50) {
      secondNum = firstNum - 50
      console.log("first higher than second", [secondNum, firstNum])
      return [secondNum, firstNum]
@@ -40,7 +51,7 @@ console.log("words in function", words)
     <>
       <h1>this is where we'll build the app</h1>
       <ol>
-        {words.map(word => {return(
+        {words.map((word: string) => {return(
             <li key={word}>{word}</li>
         )
         })}

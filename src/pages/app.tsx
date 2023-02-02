@@ -1,61 +1,11 @@
 import React from "react";
 import { arrayBuffer } from "stream/consumers";
-import wordsList from '../util/3000words.json'
-console.log("word list: ", wordsList)
-
-export const fiftyRandomWords = (words: any[]) => {
- let els = generateElements()
- let shuffled = shuffleArray(wordsList)
- let selectedWords = shuffled.slice(els[0], els[1])
- return selectedWords
-}
-
-const shuffleArray = (array: any[]) => {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      const temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
-    }
-    return array
-  }
-
-const generateElements = () => {
- let firstNum = Math.floor(Math.random() * wordsList.length)
- let secondNum
- if (wordsList.length - firstNum < 50) {
-     secondNum = firstNum - 50
-     console.log("first higher than second", [secondNum, firstNum])
-     return [secondNum, firstNum]
- } else {
-     secondNum = firstNum + 50
-     console.log( "second higher than first", [firstNum, secondNum])
-     return [firstNum, secondNum]
- }
-}
-
-interface WordList {
-    words: []
-}
-
-interface WordListProps {
-    words: WordList
-}
-
-console.log("random words", fiftyRandomWords(wordsList))
+import WordList from "../components/wordlist";
 
 export default function App() {
-let words = fiftyRandomWords(wordsList)
-console.log("words in function", words)
     return (
     <>
-      <h1>this is where we'll build the app</h1>
-      <ol>
-        {words.map((word: string) => {return(
-            <li key={word}>{word}</li>
-        )
-        })}
-      </ol>
+     <WordList />
     </>
   );
 }

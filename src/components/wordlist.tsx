@@ -38,7 +38,7 @@ let words = fiftyRandomWords(wordsList)
 console.log("words in function", words)
     return (
     <>
-      <h1>this is where we'll build the app</h1>
+ 
       <ol>
         {words.map((word: string) => {return(
             <li key={word}>{word}</li>

@@ -10,9 +10,8 @@ export default function App() {
 </div>
 
 <div className="content">
-  <h2>CSS Template</h2>
-  <p>A full-height, fixed sidenav and content.</p>
-    
+  <h2>Fridger</h2>
+  <p>A fridge poetry simulator</p>
 </div>
     </>
   );

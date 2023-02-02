@@ -38,7 +38,7 @@ export default function WordList() {
   let words = fiftyRandomWords(wordsList);
   console.log("words in function", words);
   return (
-    <>
+    <div>
       <ul style={{ listStyleType: "none" }}>
         {words.map((word: string) => {
           return (
@@ -48,6 +48,6 @@ export default function WordList() {
           );
         })}
       </ul>
-    </>
+    </div>
   );
 }

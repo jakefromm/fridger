@@ -4,7 +4,7 @@ import Draggable from "react-draggable";
 export default function WordElement(props: any) {
   return (
     <Draggable>
-      <p>{props.word}</p>
+      <p className="word">{props.word}</p>
     </Draggable>
   );
 }

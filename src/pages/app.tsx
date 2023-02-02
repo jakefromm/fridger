@@ -6,8 +6,10 @@ export default function App() {
   return (
     <>
       <div className="content">
-        <h2>Fridger</h2>
-        <p>A fridge poetry simulator</p>
+        <div className="title-text">
+          <h2 className="title">Fridger: </h2>
+          <p>A fridge poetry simulator</p>
+        </div>
         <WordList />
       </div>
     </>

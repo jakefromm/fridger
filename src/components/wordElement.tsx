@@ -1,6 +1,10 @@
-import React from "react";
+import React, { Component, useState } from "react";
+import Draggable from "react-draggable";
 
 export default function WordElement(props: any) {
-  console.log("word in wordElement: ", props.word);
-  return <p>{props.word}</p>;
+  return (
+    <Draggable>
+      <p>{props.word}</p>
+    </Draggable>
+  );
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import wordsList from "../util/3000words.json";
 import WordElement from "./wordElement";
 console.log("word list: ", wordsList);
@@ -39,7 +39,7 @@ export default function WordList() {
   console.log("words in function", words);
   return (
     <>
-      <ol>
+      <ul style={{ listStyleType: "none" }}>
         {words.map((word: string) => {
           return (
             <li key={word}>
@@ -47,7 +47,7 @@ export default function WordList() {
             </li>
           );
         })}
-      </ol>
+      </ul>
     </>
   );
 }

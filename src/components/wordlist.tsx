@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import wordsList from "../util/3000words.json";
+import wordsList from "../util/techWords.json";
 import WordElement from "./wordElement";
 console.log("word list: ", wordsList);
 
-export const fiftyRandomWords = (words: any[]) => {
-  let els = generateElements();
+const randomWords = (wordCount: number, words: any[]) => {
+  let els = generateElements(wordCount, words);
   let shuffled = shuffleArray(words);
   let selectedWords = shuffled.slice(els[0], els[1]);
   return selectedWords;
@@ -20,26 +20,30 @@ const shuffleArray = (array: any[]) => {
   return array;
 };
 
-const generateElements = () => {
-  let firstNum = Math.floor(Math.random() * wordsList.length);
+const generateElements = (wordCount: number, list: any[]) => {
+  let firstNum = Math.floor(Math.random() * list.length);
   let secondNum;
-  if (wordsList.length - firstNum < 50) {
-    secondNum = firstNum - 50;
+  if (list.length - firstNum < wordCount) {
+    secondNum = firstNum - wordCount;
     console.log("first higher than second", [secondNum, firstNum]);
     return [secondNum, firstNum];
   } else {
-    secondNum = firstNum + 50;
+    secondNum = firstNum + wordCount;
     console.log("second higher than first", [firstNum, secondNum]);
     return [firstNum, secondNum];
   }
 };
 
 export default function WordList() {
-  let words = fiftyRandomWords(wordsList);
+  let words = [];
+  words.push(randomWords(50, wordsList.buzzwords));
+  words.push(randomWords(25, wordsList.genericWords));
+  words = words.reduce((elem1, elem2) => elem1.concat(elem2));
+  words = shuffleArray(words);
   console.log("words in function", words);
   return (
-    <div>
-      <ul style={{ listStyleType: "none" }}>
+    <div className="container">
+      <ul className="word-list" style={{ listStyleType: "none" }}>
         {words.map((word: string) => {
           return (
             <li key={word}>
@@ -48,6 +52,7 @@ export default function WordList() {
           );
         })}
       </ul>
+      <div className="fridge"></div>
     </div>
   );
 }

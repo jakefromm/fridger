@@ -58,6 +58,29 @@
 
   .word {
     border: 1px solid black;
+    background-color: white;
     padding: 0.5em;
-    display: inline-block; 
+    margin: 0;
+   align-self: center;
+  }
+
+  .word-list {
+   display: flex;
+   flex-direction: row;
+   width: 30vw;
+   flex-wrap: wrap;
+   justify-content: flex-start;
+   align-content: center;
+   
+  gap: 10px 20px; /* row-gap column gap */
+
+  }
+
+  .fridge {
+    border: 1px solid black;
+    width: 65vw;
+  }
+
+  .container {
+    display: flex;
   }

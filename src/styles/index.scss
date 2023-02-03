@@ -1,8 +1,57 @@
 
-  
+  // Small tablets and large smartphones (landscape view)
+$screen-sm-min: 390px;
+
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+
+// Tablets and small desktops
+$screen-lg-min: 992px;
+
+// Large tablets and desktops
+$screen-xl-min: 1200px;
+
+
+
+// Small devices
+@mixin sm {
+    @media (min-width: #{$screen-sm-min}) {
+        @content;
+    }
+ }
+ 
+ // Medium devices
+ @mixin md {
+    @media (min-width: #{$screen-md-min}) {
+        @content;
+    }
+ }
+ 
+ // Large devices
+ @mixin lg {
+    @media (min-width: #{$screen-lg-min}) {
+        @content;
+    }
+ }
+ 
+ // Extra large devices
+ @mixin xl {
+    @media (min-width: #{$screen-xl-min}) {
+        @content;
+    }
+ }
+
+ // Custom devices
+// @mixin rwd($screen) {
+//     @media (min-width: $screen + 'px') {
+//         @content;
+//     }
+//  }
+
   main {
     margin: 0;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+    
   }
 
   .title {
@@ -66,21 +115,42 @@
 
   .word-list {
    display: flex;
-   flex-direction: row;
-   width: 30vw;
-   flex-wrap: wrap;
-   justify-content: flex-start;
-   align-content: center;
-   
-  gap: 10px 20px; /* row-gap column gap */
+   padding-left: 0;
+   @include sm {
+    flex-direction: row;
+    width: 80vw;
+}
+@include lg {
+
+    flex-direction: row;
+    width: 30vw;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: center;
+    margin-right: 0.5rem;
+
+    
+   gap: 10px 20px; /* row-gap column gap */
+}
 
   }
 
   .fridge {
     border: 1px solid black;
-    width: 65vw;
+    width: 70vw;
+    margin-left: 1rem;
   }
 
   .container {
+    margin: 0.5rem;
+    padding: 0.5rem;
     display: flex;
+    @include sm {
+        flex-direction: column;
+    }
+    @include lg {
+        flex-direction: row;
+        justify-content: space-between;
+    
+    }
   }

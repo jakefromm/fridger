@@ -47,7 +47,7 @@ export default function WordList() {
         {words.map((word: string) => {
           return (
             <li key={word}>
-              <WordElement word={word} />
+              <WordElement word={word.toLowerCase()} />
             </li>
           );
         })}
